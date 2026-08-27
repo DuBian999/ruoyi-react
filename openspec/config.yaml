@@ -1,0 +1,25 @@
+schema: spec-driven
+
+# Project context (optional)
+# This is shown to AI when creating artifacts.
+context: |
+  Tech stack: React 19.2 + TypeScript 6 + Vite 8 (Rolldown), Ant Design 5,
+  Zustand (state), React Router v7, axios. 测试: Vitest + @testing-library/react
+  + MSW (单测/API mock) 与 Playwright (E2E)。
+  Domain: 若依(RuoYi)后台管理系统前端，从 RuoYi-Vue3 (Vue3 + Element Plus)
+  迁移为 React。后端为 RuoYi-Vue (Spring Boot)，接口返回 { code, msg, data }，
+  code=200 成功、401 未授权、500 错误。认证走 Bearer token (localStorage)。
+  权限体系: 后端下发菜单树 → 前端动态路由；按钮级权限用权限字符串判断。
+
+# Per-artifact rules (optional)
+rules:
+  specs:
+    - 每个能力场景必须用 GIVEN/WHEN/THEN 描述，且每个 THEN 至少对应一条单测或 E2E
+  tasks:
+    - 任务要拆到可独立验证，且每个任务标注「是否有测试覆盖」
+
+# Per-operation guidance (optional)
+operations:
+  apply:
+    guidance:
+      - 实现时同步编写对应测试，不允许只提交无测试的实现
